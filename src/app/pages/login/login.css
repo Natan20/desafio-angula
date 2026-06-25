@@ -1,0 +1,64 @@
+/* --- Dimensionamento e Proporções dos Elementos Visuais --- */
+
+/* Limita a altura máxima da Ranger para manter a proporção da imagem sem distorcer */
+.foto-veiculo {
+  max-height: 75%;
+  object-fit: contain; /* Garante que a imagem se ajuste ao espaço de forma responsiva */
+}
+
+/* Controla o tamanho fixo e proporcional do logotipo da Ford na tela */
+.marca-ford {
+  width: 160px;
+  height: auto;
+}
+
+/* Define o limite de largura máxima do formulário para mantê-lo elegante em telas grandes */
+.caixa-formulario {
+  max-width: 420px;
+}
+
+
+/* --- Cores e Identidade Visual (Design System da Ford) --- */
+
+/* Aplica a cor verde institucional Ford ao título de boas-vindas */
+.texto-boasvindas {
+  color: #198754 !important; /* O !important sobrepõe as classes nativas do Bootstrap */
+}
+
+/* Customização do botão com o tom cinza/prata corporativo do protótipo */
+.botao-entrar {
+  background-color: #b0b7bd;
+  transition: background-color 0.2s ease; /* Cria um efeito suave de transição de cor */
+}
+
+/* Feedback visual de foco (hover) quando o usuário passa o mouse pelo botão */
+.botao-entrar:hover {
+  background-color: #9aa1a6;
+}
+
+
+/* --- Comportamentos Dinâmicos e Estados dos Inputs --- */
+
+/* Remove a sombra e a borda azul padrão que o Bootstrap coloca nos inputs ao clicar */
+.grupo-campo .form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* EFEITO AVANÇADO (focus-within): Quando o usuário clica no input que está ESCONDIDO
+   dentro da div, a div pai inteira ganha essa borda preta sutil e sombra. 
+   Isso simula o comportamento de um campo único perfeito igual ao do protótipo! */
+.grupo-campo:focus-within {
+  border-color: #000000 !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.05);
+}
+
+/* Controla o tamanho dos pequenos ícones informativos de ajuda */
+.icone-ajuda {
+  font-size: 13px;
+}
+
+/* Transforma o ponteiro do mouse na 'mãozinha' indicando que o elemento é clicável */
+.clicavel {
+  cursor: pointer;
+}
