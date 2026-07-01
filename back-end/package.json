@@ -1,0 +1,14 @@
+{
+  "name": "desafio-angula-api",
+  "version": "1.0.0",
+  "description": "API mock do desafio Sprint 07 Angular (Ford)",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

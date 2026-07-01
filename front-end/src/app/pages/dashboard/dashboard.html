@@ -1,0 +1,126 @@
+<div class="container-fluid p-4 fundo-dashboard">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex align-items-center gap-2">
+      <img src="http://localhost:3001/img/ford.png" alt="Ford" class="logo-dashboard">
+      <h4 class="m-0 titulo-dashboard">Dashboard FORD</h4>
+    </div>
+    <a routerLink="/home" class="btn btn-outline-success btn-sm">Voltar para Home</a>
+  </div>
+
+  <!-- Passo 8 e Passo 9: cartão de busca por modelo + 3 cartões de métricas -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-md-3">
+      <div class="card h-100 shadow-sm cartao-metrica">
+        <div class="card-body">
+          <h6 class="text-muted small text-uppercase mb-2">Veículo</h6>
+          <select
+            class="form-select"
+            name="veiculoSelecionadoId"
+            [(ngModel)]="veiculoSelecionadoId"
+            (ngModelChange)="onSelecionarVeiculo()"
+          >
+            <option [ngValue]="null" disabled>Selecione...</option>
+            <option *ngFor="let v of veiculos" [ngValue]="v.id">{{ v.vehicle }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card h-100 shadow-sm cartao-metrica text-center">
+        <div class="card-body">
+          <h6 class="text-muted small text-uppercase mb-2">Total de Vendas</h6>
+          <p class="fs-4 fw-bold text-success mb-0" *ngIf="veiculoSelecionado; else semSelecao">
+            {{ veiculoSelecionado.volumetotal }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card h-100 shadow-sm cartao-metrica text-center">
+        <div class="card-body">
+          <h6 class="text-muted small text-uppercase mb-2">Conectados</h6>
+          <p class="fs-4 fw-bold text-success mb-0" *ngIf="veiculoSelecionado; else semSelecao">
+            {{ veiculoSelecionado.connected }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card h-100 shadow-sm cartao-metrica text-center">
+        <div class="card-body">
+          <h6 class="text-muted small text-uppercase mb-2">Update Software</h6>
+          <p class="fs-4 fw-bold text-success mb-0" *ngIf="veiculoSelecionado; else semSelecao">
+            {{ veiculoSelecionado.softwareUpdates }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #semSelecao>
+    <p class="text-muted small mb-0">Selecione um veículo</p>
+  </ng-template>
+
+  <!-- Passo 10: imagem central do modelo selecionado (servida pelo back-end) -->
+  <div class="text-center mb-4" *ngIf="veiculoSelecionado && veiculoSelecionado.img">
+    <img [src]="veiculoSelecionado.img" [alt]="veiculoSelecionado.vehicle" class="img-fluid imagem-veiculo-central">
+  </div>
+
+  <!-- Passo 11: tabela com busca por código do veículo (VIN) -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <h6 class="text-muted small text-uppercase mb-0">Veículos conectados</h6>
+        <input
+          type="text"
+          class="form-control w-auto"
+          placeholder="Buscar por código do veículo (VIN)..."
+          name="termoVin"
+          [(ngModel)]="termoVin"
+          (input)="onDigitarVin($event)"
+        >
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th>Código - Vin</th>
+              <th>Odômetro</th>
+              <th>Nível de Combustível</th>
+              <th>Status</th>
+              <th>Lat</th>
+              <th>Long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dado of dadosFiltrados">
+              <td>{{ dado.vin }}</td>
+              <td>{{ dado.odometro }} Km</td>
+              <td>{{ dado.nivelCombustivel }} %</td>
+              <td>
+                <span
+                  class="badge"
+                  [class.bg-success]="dado.status === 'on'"
+                  [class.bg-secondary]="dado.status !== 'on'"
+                >
+                  {{ dado.status }}
+                </span>
+              </td>
+              <td>{{ dado.lat }}</td>
+              <td>{{ dado.long }}</td>
+            </tr>
+            <tr *ngIf="!dadosFiltrados.length">
+              <td colspan="6" class="text-center text-muted py-3">Nenhum veículo encontrado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+/* --- Cabeçalho --- */
+.fundo-dashboard {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.logo-dashboard {
+  width: 40px;
+  height: auto;
+}
+
+.titulo-dashboard {
+  color: #198754;
+  font-weight: 600;
+}
+
+/* --- Cartões de métricas (Passos 8 e 9) --- */
+.cartao-metrica {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* --- Imagem central do veículo selecionado (Passo 10) --- */
+.imagem-veiculo-central {
+  max-height: 320px;
+  object-fit: contain;
+}

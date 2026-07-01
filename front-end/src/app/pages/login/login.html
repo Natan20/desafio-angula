@@ -1,0 +1,80 @@
+<!-- Utilização de Bootstrap: container-fluid, row, vh-100, d-flex e align-items são classes nativas do framework -->
+<div class="container-fluid p-0 overflow-hidden">
+  <div class="row g-0 vh-100">
+    
+    <!-- LADO ESQUERDO: Painel Visual com Bootstrap -->
+    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center bg-white p-5">
+      <img src="http://localhost:3001/img/ranger.png" alt="Ford Ranger" class="img-fluid foto-veiculo">
+    </div>
+
+    <!-- LADO DIREITO: Painel do Formulário -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center bg-light px-5">
+      <div class="w-100 caixa-formulario">
+        
+        <div class="text-center mb-5">
+          <img src="http://localhost:3001/img/ford.png" alt="Ford Logo" class="marca-ford">
+        </div>
+
+        <h2 class="text-center text-success fw-normal mb-4 texto-boasvindas">
+          Boas-vindas
+        </h2>
+
+        <!-- Diretiva do Angular: (submit) intercepta o envio do formulário de forma limpa -->
+        <form (submit)="validarAcesso()">
+          
+          <!-- CAMPO DE E-MAIL -->
+          <div class="mb-3">
+            <div class="grupo-campo d-flex align-items-center border bg-white rounded px-2 py-1 shadow-sm">
+              <i class="bi bi-person text-muted me-2 fs-5"></i>
+              
+              <!-- Diretiva do Angular: ngModel vincula o input diretamente à variável do TypeScript -->
+              <!-- Evento (input): Dispara a nossa busca reativa com RxJS a cada tecla digitada -->
+                  <input type="email" class="form-control border-0 bg-transparent py-2 px-1 text-muted" 
+                      placeholder="Insira seu Usuario" required name="Usuario"
+                  [(ngModel)]="usuarioDigitado" (input)="onChaveDigitada()">
+                    
+              <i class="bi bi-info-circle text-success icone-ajuda"></i>
+            </div>
+          </div>
+
+          <!-- CAMPO DE SENHA -->
+          <div class="mb-4">
+            <div class="grupo-campo d-flex align-items-center border bg-white rounded px-2 py-1 shadow-sm">
+              <i class="bi bi-lock text-success me-2 fs-5"></i>
+              
+              <!-- Diretiva do Angular: ngModel controlando o campo de senha -->
+              <input type="password" class="form-control border-0 bg-transparent py-2 px-1 text-muted" 
+                     placeholder="Insira sua senha" required name="senha"
+                     [(ngModel)]="senhaDigitada">
+              
+              <i class="bi bi-eye-slash text-muted ms-2 clicavel"></i>
+            </div>
+          </div>
+
+          <!-- MENSAGEM DE ALERTA DINÂMICA -->
+          <!-- Diretiva do Angular: ngIf exibe esta caixinha de erro do Bootstrap apenas se a flag for verdadeira -->
+          <div *ngIf="exibirErroLogin" class="alert alert-danger text-center py-2 small mb-4" role="alert">
+            Usuário ou senha incorretos. Tente novamente!
+          </div>
+
+          <!-- COMPONENTE SWITCH -->
+          <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+            <span class="text-secondary small fw-medium">Logar automaticamente</span>
+            <div class="form-check form-switch m-0 d-flex align-items-center">
+              <input class="form-check-input interruptor-custom clicavel" type="checkbox" id="autoLogin">
+            </div>
+            <i class="bi bi-info-circle text-success icone-ajuda"></i>
+          </div>
+
+          <!-- BOTÃO ENTRAR -->
+          <button type="submit" class="btn botao-entrar w-100 fw-bold py-2 text-white shadow-sm border-0">
+            Entrar
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,91 @@
+/* --- Estilização do Botão Hambúrguer --- */
+.botao-hamburguer {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #198754; /* Cor verde nos três traços */
+  border-radius: 8px;
+  padding: 4px 12px;
+  transition: all 0.2s ease;
+}
+
+.botao-hamburguer:hover {
+  background-color: #198754;
+  color: #ffffff;
+}
+
+/* --- Painel Lateral Retrátil (Offcanvas) --- */
+.painel-lateral {
+  width: 280px !important; /* Define a largura fixa da aba ao expandir */
+  background-color: #ffffff;
+}
+
+.marca-lateral {
+  width: 100px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.item-menu {
+  color: #198754;
+  font-weight: 500;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s ease;
+}
+
+.item-menu:hover {
+  background-color: #f8f9fa;
+  color: #146c43;
+}
+
+.ativo-home {
+  background-color: #e9ecef;
+  border-left: 4px solid #dc3545; /* Linha vermelha do protótipo */
+  color: #0f5132;
+}
+
+/* --- Área de Conteúdo e Fundo (Passo 6) --- */
+.painel-conteudo {
+  position: relative; /* Ponto de referência obrigatório para as camadas */
+  background-image: url('http://localhost:3001/img/ranger.png');
+  
+  /* AJUSTADO: Usamos 'contain' para o carro ficar menor e visível por inteiro sem cortes */
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  width: 100%;
+  height: 100vh;
+  background-color: #f8f9fa; /* Fundo cinza claro elegante onde a foto não cobrir */
+}
+
+
+/* --- Cartão de Boas-Vindas (Passo 4) --- */
+.caixa-boasvindas {
+  width: 100%;
+  max-width: 500px;
+  height: 320px;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.cabecalho-cartao {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.titulo-cartao {
+  color: #0d6efd !important;
+  font-weight: 400;
+}
+
+/* --- Utilitários de Controle de Camadas --- */
+.posicao-relativa {
+  position: relative;
+}
+
+.posicao-frente {
+  position: relative;
+  z-index: 5 !important; /* Camada alta para saltar totalmente à frente da película verde */
+}
